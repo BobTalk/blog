@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <%- include ../include/linkFile.html%>
+</head>
+<body>
+<%- include ../include/header.html%>
+
+<%acticles.forEach(function(acticle){%>
+<div class="media" style="padding: 5px 30px">
+    <div class="media-left">
+        <a href="#">
+            <img class="media-object" src="<%=acticle.picture%>" alt="<%=acticle.user.username%>"
+                 style="width: 60px;height: 75px;">
+        </a>
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading">
+            <a href="/acticle/detail/<%=acticle._id%>"><%=acticle.title%></a>
+        </h4>
+        <p><%=acticle.content.length>50?acticle.content.slice(0,50)+'......':acticle.content%></p>
+        <p>
+            作者：<%=acticle.user.username%>|
+            发布时间：<%=acticle.createAt.toLocaleString()%>
+        </p>
+    </div>
+</div>
+<%})%>
+
+
+<nav aria-label="Page navigation" style="text-align: center;">
+    <ul class="pagination">
+        <!-- <li>
+             <a href="/?pageNum=<%=pageNum-1%>" aria-label="Previous">
+                 <span aria-hidden="true">&laquo;</span>
+             </a>
+         </li>-->
+        <%if(pageNum>1){%>
+        <li>
+            <a href="/?pageNum=<%=pageNum-1%>" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <%}%>
+
+        <%
+        for(let i =1; i<=totalPages;i++){%>
+        <li class="<%=i==pageNum?'active':''%>"><a href="/?pageNum=<%=i%>"><%=i%></a></li>
+        <% }%>
+
+        <%if(pageNum < totalPages){%>
+        <li>
+            <a href="/?pageNum=<%=pageNum+1%>" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        <%}%>
+        <!-- <li>
+             <a href="/?pageNum=<%=pageNum+1%>" aria-label="Next">
+                 <span aria-hidden="true">&raquo;</span>
+             </a>
+         </li>-->
+    </ul>
+</nav>
+</body>
+</html>

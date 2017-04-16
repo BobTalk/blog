@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%=title%></title>
+    <%- include ../include/linkFile.html%>
+</head>
+<body>
+<%- include ../include/header.html%>
+<div class="panel panel-default">
+    <div class="panel-heading">
+    <%=acticle.title%>
+    </div>
+    <div class="panel-body">
+        <%=acticle.content%>
+    </div>
+    <div class="panel-footer">
+        <a href="/acticle/update/<%=acticle._id%>" class="btn btn-warning">编辑</a>
+        <a href="/acticle/delete/<%=acticle._id%>" class="btn btn-danger">删除</a>
+    </div>
+</div>
+
+</body>
+</html>
